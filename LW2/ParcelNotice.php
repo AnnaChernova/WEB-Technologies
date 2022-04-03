@@ -1,19 +1,5 @@
 <?php
 include 'style.php';
-$delivery = array(
-    "a" => "Курьер",
-    "b" => "Самолет",
-    "c" => "Поезд",
-    "d" => "Автотранспорт");
-$form = array(
-    "a" => "Круглая",
-    "b" => "Прямоугольная",
-    "c" => "Квадратная");
-$container = array(
-    "a" => "Бьющаяся",
-    "b" => "Хрупкая",
-    "c" => "Водопроницаемая",
-    "d" => "Пожароопасная");
 ?>
 <div style="width:40%; margin-left: auto; margin-right: auto;">
 <h3>Извещение о посылке</h3>
@@ -32,16 +18,17 @@ $container = array(
         <legend>Дополнительная информация</legend>
         <p>Доставка:
             <?php
-            foreach ($delivery as $key => $value) {
-                echo "<p><input type=checkbox name='delivery[$key]' value=$value > $value </p>";
-            }
+            echo "<p><input type=checkbox name='delivery[]' value=Курьер > Курьер </p>";
+            echo "<p><input type=checkbox name='delivery[]' value=Самолет > Самолет </p>";
+            echo "<p><input type=checkbox name='delivery[]' value=Поезд > Поезд </p>";
+            echo "<p><input type=checkbox name='delivery[]' value=Автотранспорт > Автотранспорт </p>";
             ?>
         </p>
         <p>Форма посылки: <select name="form">
                 <?php
-                foreach ($form as $key => $value) {
-                    echo "<option value = $value> $value </option>";
-                }
+                echo "<option value = Круглая> Круглая </option>";
+                echo "<option value = Прямоугольная> Прямоугольная </option>";
+                echo "<option value = Квадратная> Квадратная </option>";
                 ?>
             </select></p>
         <p><label for="color">Цвет посылки: <input type="color" name="color"></label></p>
@@ -51,9 +38,11 @@ $container = array(
                 <p>
                     <select name="container[]" size=4 multiple>
                         <?php
-                        foreach ($container as $key => $value) {
-                            echo "<option value=$value > $value </option>";
-                        } ?>
+                        echo "<option value=Бьющаяся > Бьющаяся </option>";
+                        echo "<option value=Хрупкая > Хрупкая </option>";
+                        echo "<option value=Водопроницаемая > Водопроницаемая </option>";
+                        echo "<option value=Пожароопасная > Пожароопасная </option>";
+                        ?>
                     </select>
                 </p>
             </td>
