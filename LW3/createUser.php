@@ -123,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col-md-12">
                 <h2 class="mt-5">Создание нового пользователя</h2>
                 <p align="center">Пожалуйста, заполните форму</p>
-                <table>
+                <table class="bordery">
                     <th></th>
                     <th></th>
                     <tbody>
