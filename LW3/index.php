@@ -2,16 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
-        .wrapper {
-            margin: 0 auto;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <script>
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
@@ -26,7 +17,7 @@
                 <div class="mt-5 mb-3 clearfix">
                     <a href="createUser.php" class="btn btn-success pull-right">
                         <i class="fa fa-plus"></i> Добавить нового пользователя</a>
-                    <h2 class="pull-left">Найти пользователя по фильтру "тип"</h2>
+                    <h2 class="pull-left">Пользователи отеля "У Анны"</h2>
 
                 </div>
                 <?php
@@ -44,40 +35,49 @@
                 }
                 ?>
                 <form name="search" method="post">
-                    <select aling="center" name="UserType" size="1">
-
-                        <?php
-                        require_once "config.php";
-                        if (empty($_POST['UserType'])) {
-                            echo "<option value=\"\" selected disabled hidden>Выберите тип пользователя</option>";
-                        }
-                        $sql_userType_filter = "SELECT distinct UserType from hoteluser;";
-                        if ($result_userType_filter = mysqli_query($link, $sql_userType_filter)) {
-                            if (mysqli_num_rows($result_userType_filter) > 0) {
-                                while ($row3 = mysqli_fetch_array($result_userType_filter)) {
-                                    if ($_POST['UserType'] === $row3['UserType']) {
-                                        $property = "selected";
-                                    } else {
-                                        $property = "";
+                    <table class="unbordery table-filter">
+                        <tr>
+                            <td>
+                                <select aling="center" name="UserType" size="1">
+                                    <?php
+                                    require_once "config.php";
+                                    if (empty($_POST['UserType'])) {
+                                        echo "<option value=\"\" selected disabled hidden>Выберите тип пользователя</option>";
                                     }
-                                    echo '<option ' . $property . ' value="' . $row3['UserType'] . '">' . $row3['UserType'] . '</option>';
-                                }
-                                mysqli_free_result($result_userType_filter);
-                            } else {
-                                echo '<div class="alert alert-danger"><em>Не найдены типы пользователей.</em></div>';
-                            }
-                        } else {
-                            echo "Oops! Something went wrong. Please try again later.";
-                        }
-                        ?>
-                    </select>
-                    <div>
-                        <br>
-                        <div><input type="submit" name="search" value="Найти"><br><br>
-                        </div>
-                        <div><input type="submit" name="clear" value="Очистить"><br><br>
-                        </div>
-                    </div>
+                                    $sql_userType_filter = "SELECT distinct UserType from hoteluser;";
+                                    if ($result_userType_filter = mysqli_query($link, $sql_userType_filter)) {
+                                        if (mysqli_num_rows($result_userType_filter) > 0) {
+                                            while ($row3 = mysqli_fetch_array($result_userType_filter)) {
+                                                if ($_POST['UserType'] === $row3['UserType']) {
+                                                    $property = "selected";
+                                                } else {
+                                                    $property = "";
+                                                }
+                                                echo '<option ' . $property . ' value="' . $row3['UserType'] . '">' . $row3['UserType'] . '</option>';
+                                            }
+                                            mysqli_free_result($result_userType_filter);
+                                        } else {
+                                            echo '<div class="alert alert-danger"><em>Не найдены типы пользователей.</em></div>';
+                                        }
+                                    } else {
+                                        echo "Oops! Something went wrong. Please try again later.";
+                                    }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <br>
+                                    <div><input type="submit" name="search" value="Найти"><br><br>
+                                    </div>
+                                    <div><input type="submit" name="clear" value="Очистить"><br><br>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </form>
                 <div class="mt-5 mb-3 clearfix">
                     <h2 class="pull-left">Список пользователей</h2>
@@ -157,11 +157,9 @@
                                 echo "Oops! Something went wrong. Please try again later.";
                             }
                         }
-
                         // Close statement
                         mysqli_stmt_close($stmt);
                     }
-
                     // Close connection
                     mysqli_close($link);
                 }
@@ -174,10 +172,10 @@
                 $sql = "SELECT * FROM hoteluser WHERE UserType like '%$UserType%';";
                 if ($result = mysqli_query($link, $sql)) {
                     if (mysqli_num_rows($result) > 0) {
-                        echo '<table class="table table-bordered table-striped">';
+                        echo '<table class="bordery">';
                         echo "<thead>";
                         echo "<tr>";
-                        echo "<th>#</th>";
+                        echo "<th>№</th>";
                         echo "<th>Тип</th>";
                         echo "<th>Имя</th>";
                         echo "<th>Фамилия</th>";
@@ -231,7 +229,7 @@
                     <h2 class="pull-left">Номера отеля "У Анны"</h2>
                 </div>
                 <form name="search" method="post">
-                    <table>
+                    <table class="unbordery table-filter">
                         <tr>
                             <td>
                                 <select aling="center" name="RoomType" size="1">
@@ -291,7 +289,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td colspan="2">
                                 <div>
                                     <br>
                                     <div><input type="submit" name="search" value="Найти"><br><br>
@@ -318,12 +316,13 @@
                 // Attempt select query execution
                 $sql2 = "SELECT * FROM roomtype rt inner join room r on r.RoomTypeId = rt.RoomTypeId WHERE r.Occupancy like '%$RoomOccupancy%' and rt.RoomType like '%$RoomType' ORDER BY " . $sort . " " . ($isAsc ? "ASC" : "DESC") . ";";
                 $result = $link->query($sql);
+                echo "<h2 class=\"pull-left\">Список номеров</h2>";
                 if ($result2 = mysqli_query($link, $sql2)) {
                     if (mysqli_num_rows($result2) > 0) {
-                        echo '<table class="table table-bordered table-striped">';
+                        echo '<table class="table bordery">';
                         echo "<thead>";
                         echo "<tr>";
-                        echo "<th>#</th>";
+                        echo "<th>№</th>";
                         echo "<th>Тип</th>";
                         echo "<th >Описание</th>";
                         echo "<th>" . '<a href="?sort=PricePerNight&direction=' . !$isAsc . '">Цена</a>' . "</th>";

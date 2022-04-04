@@ -8,6 +8,10 @@ $name_err = $secondName_err = $email_err = $userType_err = $phone_err = $login_e
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if(isset($_POST["Cancel"])) {
+        header("location: index.php");
+        exit();
+    }
     // Validate name
     $input_name = trim($_POST["name"]);
     if (empty($input_name)) {
@@ -110,13 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Create Record</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .wrapper {
-            width: 600px;
-            margin: 0 auto;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="wrapper">
@@ -124,61 +122,114 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row">
             <div class="col-md-12">
                 <h2 class="mt-5">Создание нового пользователя</h2>
-                <p>Пожалуйста, заполните форму</p>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                    <div class="form-group">
-                        <label>Имя</label>
-                        <input type="text" name="name"
-                               class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>"
-                               value="<?php echo $name; ?>">
-                        <span class="invalid-feedback"><?php echo $name_err; ?></span>
-                    </div>
-                    <div class="form-group">
-                        <label>Фамилия</label>
-                        <input type="text" name="secondName"
-                               class="form-control <?php echo (!empty($secondName_err)) ? 'is-invalid' : ''; ?>"
-                               value="<?php echo $secondName; ?>">
-                        <span class="invalid-feedback"><?php echo $secondName_err; ?></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Электронная почта</label>
-                        <input type="text" name="email"
-                               class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>"
-                               value="<?php echo $email; ?>">
-                        <span class="invalid-feedback"><?php echo $email_err; ?></span>
-                    </div>
-                    <div class="form-group">
-                        <label>Телефон</label>
-                        <input type="text" name="phone"
-                               class="form-control <?php echo (!empty($phone_err)) ? 'is-invalid' : ''; ?>"
-                               value="<?php echo $phone; ?>">
-                        <span class="invalid-feedback"><?php echo $phone_err; ?></span>
-                    </div>
-                    <div class="form-group">
-                        <label>Тип</label>
-                        <input type="text" name="userType"
-                               class="form-control <?php echo (!empty($userType_err)) ? 'is-invalid' : ''; ?>"
-                               value="<?php echo $userType; ?>">
-                        <span class="invalid-feedback"><?php echo $userType_err; ?></span>
-                    </div>
-                    <div class="form-group">
-                        <label>Логин</label>
-                        <input type="text" name="login"
-                               class="form-control <?php echo (!empty($login_err)) ? 'is-invalid' : ''; ?>"
-                               value="<?php echo $login; ?>">
-                        <span class="invalid-feedback"><?php echo $login_err; ?></span>
-                    </div>
-                    <div class="form-group">
-                        <label>Пароль</label>
-                        <input type="text" name="password"
-                               class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>"
-                               value="<?php echo $password; ?>">
-                        <span class="invalid-feedback"><?php echo $password_err; ?></span>
-                    </div>
-                    <input type="submit" class="btn btn-primary" value="Создать">
-                    <a href="index.php" class="btn btn-secondary ml-2">Отменить</a>
-                </form>
+                <p align="center">Пожалуйста, заполните форму</p>
+                <table>
+                    <th></th>
+                    <th></th>
+                    <tbody>
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label>Имя</label>
+                                    <span class="invalid-feedback"><?php echo $name_err; ?></span>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" name="name"
+                                       class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>"
+                                       value="<?php echo $name; ?>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label>Фамилия</label>
+                                    <span class="invalid-feedback"><?php echo $secondName_err; ?></span>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" name="secondName"
+                                       class="form-control <?php echo (!empty($secondName_err)) ? 'is-invalid' : ''; ?>"
+                                       value="<?php echo $secondName; ?>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label>Электронная почта</label>
+                                    <span class="invalid-feedback"><?php echo $email_err; ?></span>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" name="email"
+                                       class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>"
+                                       value="<?php echo $email; ?>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label>Телефон</label>
+                                    <span class="invalid-feedback"><?php echo $phone_err; ?></span>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" name="phone"
+                                       class="form-control <?php echo (!empty($phone_err)) ? 'is-invalid' : ''; ?>"
+                                       value="<?php echo $phone; ?>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label>Тип</label>
+                                    <span class="invalid-feedback"><?php echo $userType_err; ?></span>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" name="userType"
+                                       class="form-control <?php echo (!empty($userType_err)) ? 'is-invalid' : ''; ?>"
+                                       value="<?php echo $userType; ?>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label>Логин</label>
+                                    <span class="invalid-feedback"><?php echo $login_err; ?></span>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" name="login"
+                                       class="form-control <?php echo (!empty($login_err)) ? 'is-invalid' : ''; ?>"
+                                       value="<?php echo $login; ?>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label>Пароль</label>
+                                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" name="password"
+                                       class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>"
+                                       value="<?php echo $password; ?>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" class="btn btn-primary" value="Создать">
+                            </td>
+                            <td>
+                                <input type="submit" name="Cancel" class="btn btn-primary" value="Отменить">
+                            </td>
+                        </tr>
+                    </form>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
