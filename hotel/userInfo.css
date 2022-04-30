@@ -1,0 +1,20 @@
+.table-lk {
+    line-height: 1.5;
+    padding: 20px 20px 10px 10px;
+    text-align: center;
+    border-spacing: 5px 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: large;
+}
+
+.txt-lk-heading {
+    color: #211a1a;
+    /*border-bottom: 1px solid #E0E0E0;*/
+    overflow: auto;
+    font-size: x-large;
+}
+
+.booking-cart-table tr td {
+    border: none !important;
+}

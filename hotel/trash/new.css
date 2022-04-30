@@ -1,0 +1,27 @@
+.container {
+    width: 100%;
+    background-color: white;
+    margin: 0 auto;
+    overflow: hidden;
+    border: darkgreen solid;
+}
+
+.sidebar1 {
+    float: left;
+    width: 10%;
+    background-color: white;
+    padding: 10px;
+}
+
+.content {
+    padding: 10px 0;
+    width: 58%;
+    float: left;
+}
+
+.sidebar2 {
+    float: left;
+    width: 30%;
+    background-color: white;
+    padding: 10px 0;
+}

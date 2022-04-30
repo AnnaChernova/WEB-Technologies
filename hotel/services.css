@@ -1,0 +1,89 @@
+.dop-card {
+    width: 426px;
+    height: 45em;
+    margin-right: 2%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-bottom: 33px;
+}
+
+.dop-card-image {
+    width: 426px;
+    height: 270px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.dop-card_content {
+    background: #101820;
+    height: 23em;
+    padding: 40px 30px 50px 30px;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.dop-card_title {
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dop-card_text {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 125%;
+    -webkit-box-flex: 1;
+    /*-ms-flex-positive: 1;*/
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+.dop-card_subtitle {
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.dop-card table tr {
+    background-color: transparent !important;
+    text-align: justify;
+}
+
+.dop-card table td {
+    padding: 10px 10px 10px 10px;
+    color: rgba(255, 255, 255, 0.7);
+    border: none;
+    vertical-align: top;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.dop-card table {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+}
